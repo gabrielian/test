@@ -1,0 +1,48 @@
+using System;
+using NUnit.Framework;
+
+
+namespace test
+{
+
+    public class Tests
+    {
+        [SetUp]
+        public void Setup()
+        {
+            var dc = new DesiredCapabilities();
+            dc.SetCapability("app", @"C:/windows/system32/calc.exe");
+            var driver = new RemoteWebDriver(new Uri("http://localhost:9999"), dc);
+        }
+
+        [Test]
+        public void Test1()
+        {
+            Assert.Pass();
+        }
+    }
+
+    internal class RemoteWebDriver
+    {
+        private Uri uri;
+        private DesiredCapabilities dc;
+
+        public RemoteWebDriver(Uri uri, DesiredCapabilities dc)
+        {
+            this.uri = uri;
+            this.dc = dc;
+        }
+    }
+
+    internal class DesiredCapabilities
+    {
+        public DesiredCapabilities()
+        {
+        }
+
+        internal void SetCapability(string v1, string v2)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
